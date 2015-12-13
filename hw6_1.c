@@ -8,41 +8,37 @@ int main()
 {
 	int i;
 	char fc[32], dc[64];
-	float fnum, *fpt;
-	double dnum, *dpt;
-	int *ipt;//sizeof(float) == 4 == sizeof(int), use int pointer
-	long *lpt;//sizeof(double) == 8 == siezof(long), use long pointer
+	float fnum;
+	double dnum;
+	int *ipt = &fnum;//sizeof(float) == 4 == sizeof(int), use int pointer
+	long *lpt = &dnum;//sizeof(double) == 8 == siezof(long), use long pointer
 	printf("Input the float number:");
 	scanf("%f",&fnum);
-	ipt = &fnum;
 	print_bit_float(ipt);
 
 	printf("Input binary to convert to float:");
-	unsigned int a = 0;
+	*ipt = 0;
 	scanf("%s",fc);
 	for(i = 31;i >= 0;i--)
 	{
 		if(fc[31 - i] == '1')
-			a |= (1 << i);
+			*ipt |= (1 << i);
 	}
-	fpt = &a;
-	printf("%e\n", *fpt);
+	printf("%e\n", fnum);
 
 	printf("Input the double number:");
 	scanf("%lf",&dnum);
-	lpt = &dnum;
 	print_bit_double(lpt);
 
 	printf("Input binary to convert to double:");
-	unsigned long d = 0;
+	*lpt = 0;
 	scanf("%s",dc);
 	for(i = 63;i >= 0;i--)
 	{
 		if(dc[63 - i] == '1')
-			d |= ((long)1 << i);
+			*lpt |= ((long)1 << i);
 	}
-	dpt = &d;
-	printf("%e\n", *dpt);
+	printf("%e\n", dnum);
 
 	return 0;
 }
