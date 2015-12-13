@@ -6,7 +6,12 @@ void print_bit_double(long*);
 
 int main()
 {
-	float fnum;
+	int i;
+	char c[32];
+	struct {
+		unsigned int Field : 32;
+	} AT;
+	float fnum, *fpt;
 	double dnum;
 	int *ipt;//sizeof(float) == 4 == sizeof(int), use int pointer
 	long *lpt;//sizeof(double) == 8 == siezof(long), use long pointer
@@ -14,6 +19,20 @@ int main()
 	scanf("%f",&fnum);
 	ipt = &fnum;
 	print_bit_float(ipt);
+
+	printf("Input binary to convert to float:");
+	fpt = &AT;
+	unsigned int a = 0;
+	scanf("%s",c);
+	for(i = 31;i >= 0;i--)
+	{
+		if(c[31 - i] == '1')
+			a |= (1 << i);
+		else
+			a |= (0 << i);
+	}
+	fpt = &a;
+	printf("%e\n", *fpt);
 	printf("Input the double number:");
 	scanf("%lf",&dnum);
 	lpt = &dnum;
