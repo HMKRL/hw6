@@ -8,6 +8,7 @@ int main()
 {
 	int i;
 	char fc[33], dc[65];
+	//use union contains two unsigned int and float
 	union{
 		unsigned int inum;
 		float Field;
