@@ -1,4 +1,4 @@
-P=hw6_1
+P=hw6_2
 OBJECTS=
 CFLAGS=-g -Wall
 LDLIBS=
