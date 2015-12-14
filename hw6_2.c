@@ -28,7 +28,7 @@ int main()
 		if(fc[31 - i] == '1')
 			AT.inum |= (1 << i);
 	}
-	printf("%e\n", AT.Field);
+	printf("%e\n", AT.Field); //A.T.Field Max Power!!!
 
 	printf("Input the double number:");
 	scanf("%lf",&larger.dnum);
