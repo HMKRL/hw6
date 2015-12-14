@@ -10,8 +10,8 @@ int main()
 	char fc[32], dc[64];
 	float fnum;
 	double dnum;
-	int *ipt = &fnum;//sizeof(float) == 4 == sizeof(int), use int pointer
-	long *lpt = &dnum;//sizeof(double) == 8 == siezof(long), use long pointer
+	int *ipt = (int*)&fnum;//sizeof(float) == 4 == sizeof(int), use int pointer
+	long *lpt = (long*)&dnum;//sizeof(double) == 8 == siezof(long), use long pointer
 	printf("Input the float number:");
 	scanf("%f",&fnum);
 	print_bit_float(ipt);
@@ -58,7 +58,7 @@ void print_bit_double(long *lpt)
 	int i;
 	for(i = 63;i >= 0;i--)
 	{
-		printf("%d",(*lpt >> i) & 1);
+		printf("%ld",(*lpt >> i) & 1);
 	}
 	printf("\n");
 }
