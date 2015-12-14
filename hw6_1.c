@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void print_bit_float(int*);
-void print_bit_double(long*);
+void print_bit_float(unsigned int*);
+void print_bit_double(unsigned long*);
 
 int main()
 {
@@ -10,8 +10,8 @@ int main()
 	char fc[32], dc[64];
 	float fnum;
 	double dnum;
-	int *ipt = (int*)&fnum;//sizeof(float) == 4 == sizeof(int), use int pointer
-	long *lpt = (long*)&dnum;//sizeof(double) == 8 == siezof(long), use long pointer
+	unsigned int *ipt = (unsigned int*)&fnum;//sizeof(float) == 4 == sizeof(int), use int pointer
+	unsigned long *lpt = (unsigned long*)&dnum;//sizeof(double) == 8 == siezof(long), use long pointer
 	printf("Input the float number:");
 	scanf("%f",&fnum);
 	print_bit_float(ipt);
@@ -22,7 +22,7 @@ int main()
 	for(i = 31;i >= 0;i--)
 	{
 		if(fc[31 - i] == '1')
-			*ipt |= (1 << i);
+			*ipt |= ((unsigned int)1 << i);
 	}
 	printf("%e\n", fnum);
 
@@ -36,14 +36,14 @@ int main()
 	for(i = 63;i >= 0;i--)
 	{
 		if(dc[63 - i] == '1')
-			*lpt |= ((long)1 << i);
+			*lpt |= ((unsigned long)1 << i);
 	}
 	printf("%e\n", dnum);
 
 	return 0;
 }
 
-void print_bit_float(int *ipt)
+void print_bit_float(unsigned int *ipt)
 {
 	int i;
 	for(i = 31;i >= 0;i--)
@@ -53,7 +53,7 @@ void print_bit_float(int *ipt)
 	printf("\n");
 }
 
-void print_bit_double(long *lpt)
+void print_bit_double(unsigned long *lpt)
 {
 	int i;
 	for(i = 63;i >= 0;i--)
