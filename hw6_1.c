@@ -8,8 +8,6 @@ int main()
 {
 	int i;
 	char fc[33], dc[65];
-	fc[33] = '\0';
-	dc[65] = '\0';
 	float fnum;
 	double dnum;
 	unsigned int *ipt = (unsigned int*)&fnum;//sizeof(float) == 4 == sizeof(int), use int pointer

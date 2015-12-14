@@ -8,8 +8,6 @@ int main()
 {
 	int i;
 	char fc[33], dc[65];
-	fc[33] = '\0';
-	dc[65] = '\0';
 	union{
 		unsigned int inum;
 		float Field;
